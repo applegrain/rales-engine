@@ -27,6 +27,11 @@ class Api::V1::MerchantsController < Api::V1::BaseController
     respond_with merchant.items
   end
 
+  def invoices
+    merchant = Merchant.find_by(id: find_params[:merchant_id].to_i)
+    respond_with merchant.invoices
+  end
+
   private
 
   def find_params
