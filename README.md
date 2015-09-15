@@ -1,6 +1,6 @@
 ## Rales Engine
 
-[![Stories in Ready](https://badge.waffle.io/applegrain/rales-engine.svg?label=ready&title=Ready)](http://waffle.io/applegrain/rales-engine) [![Code Climate](https://codeclimate.com/github/applegrain/rales-engine/badges/gpa.svg)](https://codeclimate.com/github/applegrain/rales-engine)
+[![Stories in Ready](https://badge.waffle.io/applegrain/rales-engine.svg?label=ready&title=Ready)](http://waffle.io/applegrain/rales-engine) [![Code Climate](https://codeclimate.com/github/applegrain/rales-engine/badges/gpa.svg)](https://codeclimate.com/github/applegrain/rales-engine) [![Build Status](https://travis-ci.org/applegrain/rales-engine.svg?branch=master)](https://travis-ci.org/applegrain/rales-engine)
 
 [Project Outline](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/rales_engine.md)
 
