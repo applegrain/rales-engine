@@ -8,6 +8,7 @@ describe Api::V1::InvoicesController do
                             merchant_id: merchant.id) }
 
   context "#show" do
+
     it "returns a record matching the given id" do
       get :show, id: invoice.id, format: :json
 
@@ -21,6 +22,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#find" do
+
     it "returns a record matching the given id" do
       get :find, id: invoice.id, format: :json
 
@@ -56,6 +58,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#find_all" do
+
     let!(:invoice) { Fabricate(:invoice,
                               customer_id: customer.id,
                               merchant_id: merchant.id) }
@@ -107,6 +110,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#transactions" do
+
     let!(:invoice) { Fabricate(:invoice) }
     let!(:invoice1) { Fabricate(:invoice) }
     let!(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
@@ -132,6 +136,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#invoice_items" do
+
     let!(:invoice) { Fabricate(:invoice) }
     let!(:invoice1) { Fabricate(:invoice) }
     let!(:invoice_item) { Fabricate(:invoice_item, invoice_id: invoice.id) }
@@ -157,6 +162,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#items" do
+
     let!(:invoice_item) { Fabricate(:invoice_item,
                                     invoice_id: invoice.id,
                                     item_id: item.id) }
@@ -174,6 +180,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#customer" do
+
     it "returns the associated customer" do
       get :customer, invoice_id: invoice.id, format: :json
 
@@ -186,6 +193,7 @@ describe Api::V1::InvoicesController do
   end
 
   context "#merchant" do
+
     it "returns the associated merchant" do
       get :merchant, invoice_id: invoice.id, format: :json
 

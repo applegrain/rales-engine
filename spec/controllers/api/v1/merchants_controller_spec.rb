@@ -4,6 +4,7 @@ describe Api::V1::MerchantsController do
   let(:merchant) { Fabricate(:merchant) }
 
   context "#show" do
+
     it "returns a record matching the given id" do
       get :show, id: merchant.id, format: :json
 
@@ -16,6 +17,7 @@ describe Api::V1::MerchantsController do
   end
 
   context "#find" do
+
     it "returns a record matching the given id" do
       get :find, id: merchant.id, format: :json
 
@@ -38,6 +40,7 @@ describe Api::V1::MerchantsController do
   end
 
   context "#find_all" do
+
     let!(:merchant1) { Fabricate(:merchant, name: "Davis' Dolls") }
 
     it "returns all records matching the given id" do
@@ -64,6 +67,7 @@ describe Api::V1::MerchantsController do
   end
 
   context "#items" do
+
     let!(:merchant1) { Fabricate(:merchant) }
     let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
 
@@ -87,6 +91,7 @@ describe Api::V1::MerchantsController do
   end
 
   context "#invoices" do
+
     let!(:merchant1) { Fabricate(:merchant) }
     let!(:invoice) { Fabricate(:invoice, merchant_id: merchant.id) }
 

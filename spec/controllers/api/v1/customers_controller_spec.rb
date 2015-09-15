@@ -17,6 +17,7 @@ describe Api::V1::CustomersController do
   end
 
   context "#find" do
+
     it "returns a record matching the given id" do
       get :find, id: customer.id, format: :json
 
@@ -49,6 +50,7 @@ describe Api::V1::CustomersController do
   end
 
   context "#find_all" do
+
     let!(:customer) { Fabricate(:customer) }
     let!(:customer1) { Fabricate(:customer, last_name: "David") }
     let!(:customer2) { Fabricate(:customer, first_name: "Larry") }
@@ -88,6 +90,7 @@ describe Api::V1::CustomersController do
   end
 
   context "#invoices" do
+
     let!(:merchant) { Fabricate(:merchant) }
     let!(:invoice) { Fabricate(:invoice,
                                merchant_id: merchant.id,
@@ -106,6 +109,7 @@ describe Api::V1::CustomersController do
   end
 
   context "#transactions" do
+
     let!(:merchant) { Fabricate(:merchant) }
     let!(:invoice) { Fabricate(:invoice,
                                merchant_id: merchant.id,

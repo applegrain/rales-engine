@@ -35,7 +35,10 @@ class Api::V1::CustomersController < Api::V1::BaseController
   private
 
   def find_params
-    params.permit(:id, :first_name, :last_name, :customer_id)
+    params.permit(:id,
+                  :first_name,
+                  :last_name,
+                  :customer_id)
   end
 
 end

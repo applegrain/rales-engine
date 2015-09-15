@@ -50,6 +50,10 @@ class Api::V1::InvoicesController < Api::V1::BaseController
   private
 
   def find_params
-    params.permit(:id, :status, :merchant_id, :customer_id, :invoice_id)
+    params.permit(:id,
+                  :status,
+                  :merchant_id,
+                  :customer_id,
+                  :invoice_id)
   end
 end

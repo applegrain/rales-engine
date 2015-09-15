@@ -30,6 +30,10 @@ class Api::V1::TransactionsController < Api::V1::BaseController
   private
 
   def find_params
-    params.permit(:id, :credit_card_number, :result, :invoice_id, :transaction_id)
+    params.permit(:id,
+                  :credit_card_number,
+                  :result,
+                  :invoice_id,
+                  :transaction_id)
   end
 end
