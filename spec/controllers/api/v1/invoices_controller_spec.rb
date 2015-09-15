@@ -157,11 +157,6 @@ describe Api::V1::InvoicesController do
   end
 
   context "#items" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let!(:invoice) { Fabricate(:invoice,
-                               merchant_id: merchant.id,
-                               customer_id: customer.id) }
     let!(:invoice_item) { Fabricate(:invoice_item,
                                     invoice_id: invoice.id,
                                     item_id: item.id) }
@@ -175,6 +170,18 @@ describe Api::V1::InvoicesController do
       expect(response.status).to eq 200
       expect(json.first[:id]).to eq item.id
       expect(json.first[:merchant_id]).to eq merchant.id
+    end
+  end
+
+  context "#customer" do
+    it "returns the associated customer" do
+      get :customer, invoice_id: invoice.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq customer.id
+      expect(invoice.id).to eq customer.invoices.first.id
     end
   end
 end

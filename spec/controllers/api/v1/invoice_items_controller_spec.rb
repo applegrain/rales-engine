@@ -12,7 +12,6 @@ describe Api::V1::InvoiceItemsController do
                                  invoice_id: invoice.id) }
 
   context "#show" do
-
     it "returns a record matching the given id" do
       get :show, id: invoice_item.id, format: :json
 
