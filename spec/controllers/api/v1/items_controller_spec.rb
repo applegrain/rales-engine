@@ -95,4 +95,16 @@ describe Api::V1::ItemsController do
       expect(json.first[:id]).to eq item.invoice_items.first.id
     end
   end
+
+  context "#merchant" do
+    it "returns an assoicated merchant" do
+      get :merchant, item_id: item.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq merchant.id
+      expect(json[:id]).to eq item.merchant.id
+    end
+  end
 end
