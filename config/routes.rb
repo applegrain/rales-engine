@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       resources :merchants, only: [:show] do
+        get :items
+
         collection do
           get :find
           get :find_all

@@ -65,4 +65,28 @@ describe Api::V1::MerchantsController do
       expect(json.last[:name]).to eq merchant1.name
     end
   end
+
+  context "#items" do
+    let!(:merchant) { Fabricate(:merchant) }
+    let!(:merchant1) { Fabricate(:merchant) }
+    let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
+
+    it "returns all items for given merchant" do
+      get :items, merchant_id: merchant.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 1
+    end
+
+    it "returns an empty array when the merchant has no items" do
+      get :items, merchant_id: merchant1.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 0
+    end
+  end
 end
