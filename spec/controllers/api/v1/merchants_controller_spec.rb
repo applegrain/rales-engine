@@ -9,7 +9,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq merchant.id
       expect(json[:name]).to eq merchant.name
     end
@@ -21,7 +21,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq merchant.id
       expect(json[:name]).to eq merchant.name
     end
@@ -31,7 +31,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq merchant.id
       expect(json[:name]).to eq merchant.name
     end
@@ -45,7 +45,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq merchant.id
       expect(json.first[:name]).to eq merchant.name
@@ -56,7 +56,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:name]).to eq merchant.name
       expect(json.last[:name]).to eq merchant1.name
@@ -72,7 +72,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
     end
 
@@ -81,7 +81,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 0
     end
   end
@@ -95,7 +95,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
     end
 
@@ -104,7 +104,7 @@ describe Api::V1::MerchantsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 0
     end
   end

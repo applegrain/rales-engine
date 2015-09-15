@@ -10,7 +10,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:first_name]).to eq customer.first_name
       expect(json[:last_name]).to eq customer.last_name
     end
@@ -22,7 +22,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:first_name]).to eq customer.first_name
       expect(json[:last_name]).to eq customer.last_name
     end
@@ -32,7 +32,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:first_name]).to eq customer.first_name
       expect(json[:last_name]).to eq customer.last_name
     end
@@ -42,7 +42,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:first_name]).to eq customer.first_name
       expect(json[:last_name]).to eq customer.last_name
     end
@@ -58,7 +58,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:first_name]).to eq customer.first_name
       expect(json.first[:last_name]).to eq customer.last_name
@@ -69,7 +69,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:last_name]).to eq customer.last_name
       expect(json.last[:last_name]).to eq customer1.last_name
@@ -80,7 +80,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:first_name]).to eq customer.first_name
       expect(json.last[:first_name]).to eq customer2.first_name
@@ -98,7 +98,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true).first
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:status]).to eq invoice.status
       expect(json[:customer_id]).to eq customer.id
       expect(json[:merchant_id]).to eq merchant.id
@@ -117,7 +117,7 @@ describe Api::V1::CustomersController do
 
       json = JSON.parse(response.body, symbolize_names: true).first
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:credit_card_number]).to eq transaction.credit_card_number
       expect(json[:invoice_id]).to eq invoice.id
       expect(json[:result]).to eq transaction.result
