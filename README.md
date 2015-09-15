@@ -13,7 +13,8 @@ ActiveRecord query methods using just Ruby. [Sales Engine](https://github.com/ap
 * clone the project: `git clone git@github.com:applegrain/rales-engine.git`
 * bundle
 * run the migrations with `rake db:migrate`
-* start the server with `puma`
+* load the data with `rails runner "Parser.load"`
+* start the server with `puma` or `rails s`
 
 #### Learning Goals
 
