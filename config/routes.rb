@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       end
 
       resources :customers, only: [:show] do
+          get :invoices
+          get :transactions
+
         collection do
           get :find
           get :find_all

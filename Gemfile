@@ -20,6 +20,8 @@ group :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'byebug'
+  gem 'fabrication'
+  gem "database_cleaner"
   gem 'puma'
   gem 'simplecov'
 end
