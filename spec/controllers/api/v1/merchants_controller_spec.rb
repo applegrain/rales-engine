@@ -89,4 +89,28 @@ describe Api::V1::MerchantsController do
       expect(json.count).to eq 0
     end
   end
+
+  context "#invoices" do
+    let!(:merchant) { Fabricate(:merchant) }
+    let!(:merchant1) { Fabricate(:merchant) }
+    let!(:invoice) { Fabricate(:invoice, merchant_id: merchant.id) }
+
+    it "returns all invoices for given merchant" do
+      get :invoices, merchant_id: merchant.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 1
+    end
+
+    it "returns an empty array when the merchant has no invoices" do
+      get :invoices, merchant_id: merchant1.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 0
+    end
+  end
 end
