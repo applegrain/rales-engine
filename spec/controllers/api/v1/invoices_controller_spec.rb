@@ -138,4 +138,29 @@ describe Api::V1::InvoicesController do
       expect(json.count).to eq 0
     end
   end
+
+  context "#invoice_items" do
+    let!(:invoice) { Fabricate(:invoice) }
+    let!(:invoice1) { Fabricate(:invoice) }
+    let!(:invoice_item) { Fabricate(:invoice_item, invoice_id: invoice.id) }
+
+    it "returns all invoice items related to an invoice" do
+      get :invoice_items, invoice_id: invoice.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 1
+      expect(json.first[:id]).to eq invoice_item.id
+    end
+
+    it "returns an empty array if there are no related invoice_items" do
+      get :invoice_items, invoice_id: invoice1.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 0
+    end
+  end
 end

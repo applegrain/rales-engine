@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
       resources :invoices, only: [:show] do
         get :transactions
+        get :invoice_items
 
         collection do
           get :find
