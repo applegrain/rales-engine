@@ -3,6 +3,10 @@ require "rails_helper"
 describe Api::V1::ItemsController do
   let!(:merchant) { Fabricate(:merchant) }
   let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
+  let!(:invoice) { Fabricate(:invoice) }
+  let!(:invoice_item) { Fabricate(:invoice_item,
+                                  item_id: item.id,
+                                  invoice_id: invoice.id) }
 
   context "#show" do
     it "returns a record matching the given id" do
@@ -77,6 +81,18 @@ describe Api::V1::ItemsController do
       expect(json.count).to eq 2
       expect(json.first[:name]).to eq item.name
       expect(json.last[:name]).to eq item1.name
+    end
+  end
+
+  context "#invoice_items" do
+    it "returns a collection of all associated invoice items" do
+      get :invoice_items, item_id: item.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json.first[:id]).to eq invoice_item.id
+      expect(json.first[:id]).to eq item.invoice_items.first.id
     end
   end
 end
