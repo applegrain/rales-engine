@@ -32,6 +32,11 @@ class Api::V1::InvoicesController < Api::V1::BaseController
     respond_with invoice.invoice_items
   end
 
+  def items
+    invoice = Invoice.find_by(id: find_params[:invoice_id].to_i)
+    respond_with invoice.items
+  end
+
   private
 
   def find_params

@@ -13,7 +13,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice.id
       expect(json[:customer_id]).to eq invoice.customer_id
       expect(json[:merchant_id]).to eq invoice.merchant_id
@@ -26,7 +26,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice.id
       expect(json[:customer_id]).to eq invoice.customer_id
       expect(json[:merchant_id]).to eq invoice.merchant_id
@@ -37,7 +37,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice.id
       expect(json[:customer_id]).to eq invoice.customer_id
       expect(json[:merchant_id]).to eq invoice.merchant_id
@@ -48,7 +48,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice.id
       expect(json[:customer_id]).to eq invoice.customer_id
       expect(json[:merchant_id]).to eq invoice.merchant_id
@@ -68,7 +68,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq invoice.id
       expect(json.first[:customer_id]).to eq invoice.customer_id
@@ -80,7 +80,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice.id
     end
@@ -90,7 +90,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice.id
     end
@@ -100,7 +100,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice.id
     end
@@ -116,7 +116,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq transaction.id
     end
@@ -126,7 +126,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 0
     end
   end
@@ -141,7 +141,7 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq invoice_item.id
     end
@@ -151,8 +151,30 @@ describe Api::V1::InvoicesController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 0
+    end
+  end
+
+  context "#items" do
+    let!(:merchant) { Fabricate(:merchant) }
+    let!(:customer) { Fabricate(:customer) }
+    let!(:invoice) { Fabricate(:invoice,
+                               merchant_id: merchant.id,
+                               customer_id: customer.id) }
+    let!(:invoice_item) { Fabricate(:invoice_item,
+                                    invoice_id: invoice.id,
+                                    item_id: item.id) }
+    let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
+
+    it "returns a collection of associated items" do
+      get :items, invoice_id: invoice.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json.first[:id]).to eq item.id
+      expect(json.first[:merchant_id]).to eq merchant.id
     end
   end
 end

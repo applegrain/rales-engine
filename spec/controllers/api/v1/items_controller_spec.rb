@@ -10,7 +10,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:name]).to eq item.name
       expect(json[:description]).to eq item.description
       expect(json[:merchant_id]).to eq merchant.id
@@ -23,7 +23,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:name]).to eq item.name
       expect(json[:description]).to eq item.description
       expect(json[:merchant_id]).to eq merchant.id
@@ -34,7 +34,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:name]).to eq item.name
       expect(json[:description]).to eq item.description
       expect(json[:merchant_id]).to eq merchant.id
@@ -45,7 +45,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:name]).to eq item.name
       expect(json[:description]).to eq item.description
       expect(json[:merchant_id]).to eq merchant.id
@@ -62,7 +62,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq item.id
       expect(json.first[:name]).to eq item.name
@@ -73,7 +73,7 @@ describe Api::V1::ItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:name]).to eq item.name
       expect(json.last[:name]).to eq item1.name

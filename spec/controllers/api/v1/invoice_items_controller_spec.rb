@@ -18,7 +18,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:item_id]).to eq invoice_item.item_id
       expect(json[:invoice_id]).to eq invoice_item.invoice_id
@@ -33,7 +33,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:item_id]).to eq invoice_item.item_id
       expect(json[:invoice_id]).to eq invoice_item.invoice_id
@@ -46,7 +46,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:item_id]).to eq invoice_item.item_id
     end
@@ -56,7 +56,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:invoice_id]).to eq invoice_item.invoice_id
     end
@@ -66,7 +66,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:quantity]).to eq invoice_item.quantity
     end
@@ -76,7 +76,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
       expect(json[:unit_price]).to eq invoice_item.unit_price
     end
@@ -95,7 +95,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq invoice_item.id
     end
@@ -105,7 +105,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice_item.id
     end
@@ -115,7 +115,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice_item.id
     end
@@ -125,7 +125,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice_item.id
     end
@@ -135,7 +135,7 @@ describe Api::V1::InvoiceItemsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice_item.id
       expect(json.first[:unit_price]).to eq invoice_item.unit_price

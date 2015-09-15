@@ -10,7 +10,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq transaction.id
       expect(json[:credit_card_number]).to eq transaction.credit_card_number
       expect(json[:result]).to eq transaction.result
@@ -25,7 +25,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq transaction.id
     end
 
@@ -34,7 +34,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq transaction.id
     end
 
@@ -43,7 +43,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq transaction.id
     end
 
@@ -52,7 +52,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json[:id]).to eq transaction.id
     end
   end
@@ -67,7 +67,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq transaction.id
       expect(json.first[:result]).to eq transaction.result
@@ -78,7 +78,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq transaction.id
       expect(json.last[:credit_card_number]).to eq transaction1.credit_card_number
@@ -89,7 +89,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq transaction.id
       expect(json.last[:result]).to eq transaction1.result
@@ -100,7 +100,7 @@ describe Api::V1::TransactionsController do
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.code).to eq "200"
+      expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq transaction.id
       expect(json.last[:invoice_id]).to eq transaction1.invoice_id
