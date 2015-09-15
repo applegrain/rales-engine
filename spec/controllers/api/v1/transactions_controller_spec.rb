@@ -106,4 +106,16 @@ describe Api::V1::TransactionsController do
       expect(json.last[:invoice_id]).to eq transaction1.invoice_id
     end
   end
+
+  context "#invoice" do
+    it "returns an assoicated invoice" do
+      get :invoice, transaction_id: transaction.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq invoice.id
+      expect(json[:id]).to eq transaction.invoice.id
+    end
+  end
 end

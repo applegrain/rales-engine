@@ -22,9 +22,14 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     respond_with Transaction.find(value)
   end
 
+  def invoice
+    transaction = Transaction.find_by(id: find_params[:transaction_id].to_i)
+    respond_with transaction.invoice
+  end
+
   private
 
   def find_params
-    params.permit(:id, :credit_card_number, :result, :invoice_id)
+    params.permit(:id, :credit_card_number, :result, :invoice_id, :transaction_id)
   end
 end
