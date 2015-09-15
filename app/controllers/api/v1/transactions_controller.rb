@@ -4,27 +4,19 @@ class Api::V1::TransactionsController < Api::V1::BaseController
   end
 
   def find
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Transaction.find_by(term => value)
+    respond_with Transaction.find_by(find_params)
   end
 
   def find_all
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Transaction.where(term => value)
+    respond_with Transaction.where(find_params)
   end
 
   def random
-    value = rand(Transaction.count)
-    respond_with Transaction.find(value)
+    respond_with Transaction.limit(1).order("RANDOM()")
   end
 
   def invoice
-    transaction = Transaction.find_by(id: find_params[:transaction_id].to_i)
-    respond_with transaction.invoice
+    respond_with Transaction.find_by(id: find_params[:transaction_id]).invoice
   end
 
   private

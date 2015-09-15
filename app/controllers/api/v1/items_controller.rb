@@ -4,32 +4,23 @@ class Api::V1::ItemsController < Api::V1::BaseController
   end
 
   def find
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Item.find_by(term => value)
+    respond_with Item.find_by(find_params)
   end
 
   def find_all
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Item.where(term => value)
+    respond_with Item.where(find_params)
   end
 
   def random
-    value = rand(Item.count)
-    respond_with Item.find(value)
+    respond_with Item.limit(1).order("RANDOM()")
   end
 
   def invoice_items
-    item = Item.find_by(id: find_params[:item_id].to_i)
-    respond_with item.invoice_items
+    respond_with Item.find_by(id: find_params[:item_id]).invoice_items
   end
 
   def merchant
-    item = Item.find_by(id: find_params[:item_id].to_i)
-    respond_with item.merchant
+    respond_with Item.find_by(id: find_params[:item_id]).merchant
   end
 
   private

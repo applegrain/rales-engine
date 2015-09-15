@@ -4,32 +4,23 @@ class Api::V1::CustomersController < Api::V1::BaseController
   end
 
   def find
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Customer.find_by(term => value)
+    respond_with Customer.find_by(find_params)
   end
 
   def find_all
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Customer.where(term => value)
+    respond_with Customer.where(find_params)
   end
 
   def random
-    value = rand(Customer.count)
-    respond_with Customer.find(value)
+    respond_with Customer.limit(1).order("RANDOM()")
   end
 
   def invoices
-    customer = Customer.find_by(id: find_params[:customer_id].to_i)
-    respond_with customer.invoices
+    respond_with Customer.find_by(id: find_params[:customer_id]).invoices
   end
 
   def transactions
-    customer = Customer.find_by(id: find_params[:customer_id].to_i)
-    respond_with customer.transactions
+    respond_with Customer.find_by(id: find_params[:customer_id]).transactions
   end
 
   private

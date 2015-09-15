@@ -4,47 +4,35 @@ class Api::V1::InvoicesController < Api::V1::BaseController
   end
 
   def find
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Invoice.find_by(term => value)
+    respond_with Invoice.find_by(find_params)
   end
 
   def find_all
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Invoice.where(term => value)
+    respond_with Invoice.where(find_params)
   end
 
   def random
-    value = rand(Invoice.count)
-    respond_with Invoice.find(value)
+    respond_with Invoice.limit(1).order("RANDOM()")
   end
 
   def transactions
-    invoice = Invoice.find_by(id: find_params[:invoice_id].to_i)
-    respond_with invoice.transactions
+    respond_with Invoice.find_by(id: find_params[:invoice_id]).transactions
   end
 
   def invoice_items
-    invoice = Invoice.find_by(id: find_params[:invoice_id].to_i)
-    respond_with invoice.invoice_items
+    respond_with Invoice.find_by(id: find_params[:invoice_id]).invoice_items
   end
 
   def items
-    invoice = Invoice.find_by(id: find_params[:invoice_id].to_i)
-    respond_with invoice.items
+    respond_with Invoice.find_by(id: find_params[:invoice_id]).items
   end
 
   def customer
-    invoice = Invoice.find_by(id: find_params[:invoice_id].to_i)
-    respond_with invoice.customer
+    respond_with Invoice.find_by(id: find_params[:invoice_id]).customer
   end
 
   def merchant
-    invoice = Invoice.find_by(id: params[:invoice_id].to_i)
-    respond_with invoice.merchant
+    respond_with Invoice.find_by(id: find_params[:invoice_id]).merchant
   end
 
   private

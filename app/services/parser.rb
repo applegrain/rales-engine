@@ -5,8 +5,8 @@ class Parser
   def self.load
     customer
     merchant
-    invoice
     item
+    invoice
     transaction
     invoice_item
   end
@@ -53,7 +53,12 @@ class Parser
   # InvoiceItems.csv
   def self.invoice_item
     CSV.foreach("../rales-engine/app/services/data/invoice_items.csv", headers: true, header_converters: :symbol) do |row|
-      InvoiceItem.create(row.to_hash)
+      InvoiceItem.create(
+        item_id: row[1],
+        invoice_id: row[2],
+        quantity: row[3].to_i,
+        unit_price: row[4].to_f
+      )
     end
   end
 end
