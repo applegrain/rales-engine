@@ -42,7 +42,11 @@ class Parser
   # Transactions.csv
   def self.transaction
     CSV.foreach("../rales-engine/app/services/data/transactions.csv", headers: true, header_converters: :symbol) do |row|
-      Transaction.create(row.to_hash)
+      Transaction.create({
+        invoice_id: row[1],
+        credit_card_number: row[2],
+        result: row[4]
+        })
     end
   end
 
