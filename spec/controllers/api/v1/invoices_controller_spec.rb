@@ -128,5 +128,14 @@ describe Api::V1::InvoicesController do
       expect(json.count).to eq 1
       expect(json.first[:id]).to eq transaction.id
     end
+
+    it "returns an empty array if there are no related transactions" do
+      get :transactions, invoice_id: invoice1.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 0
+    end
   end
 end
