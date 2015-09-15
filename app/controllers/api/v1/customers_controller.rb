@@ -22,10 +22,20 @@ class Api::V1::CustomersController < Api::V1::BaseController
     respond_with Customer.find(value)
   end
 
+  def invoices
+    customer = Customer.find_by(id: find_params[:customer_id].to_i)
+    respond_with customer.invoices
+  end
+
+  def transactions
+    customer = Customer.find_by(id: find_params[:customer_id].to_i)
+    respond_with customer.transactions
+  end
+
   private
 
   def find_params
-    params.permit(:id, :first_name, :last_name)
+    params.permit(:id, :first_name, :last_name, :customer_id)
   end
 
 end
