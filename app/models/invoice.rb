@@ -5,4 +5,8 @@ class Invoice < ActiveRecord::Base
 
   belongs_to :customer
   belongs_to :merchant
+
+  def self.successful
+    joins(:transactions).where("result = 'success'")
+  end
 end
