@@ -4,32 +4,27 @@ class Api::V1::MerchantsController < Api::V1::BaseController
   end
 
   def find
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Merchant.find_by(term => value)
+    respond_with Merchant.find_by(find_params)
   end
 
   def find_all
-    value = find_params.values.first
-    term = find_params.keys.first
-
-    respond_with Merchant.where(term => value)
+    respond_with Merchant.where(find_params)
   end
 
   def random
-    value = rand(Merchant.count)
-    respond_with Merchant.find(value)
+    respond_with Merchant.limit(1).order("RANDOM()")
   end
 
   def items
-    merchant = Merchant.find_by(id: find_params[:merchant_id].to_i)
-    respond_with merchant.items
+    respond_with Merchant.find_by(id: find_params[:merchant_id]).items
   end
 
   def invoices
-    merchant = Merchant.find_by(id: find_params[:merchant_id].to_i)
-    respond_with merchant.invoices
+    respond_with Merchant.find_by(id: find_params[:merchant_id]).invoices
+  end
+
+  def revenue
+    respond_with Merchant.find_by(id: find_params[:merchant_id]).revenue
   end
 
   private
