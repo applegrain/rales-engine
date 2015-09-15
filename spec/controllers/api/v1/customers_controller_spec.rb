@@ -15,6 +15,78 @@ describe Api::V1::CustomersController do
     end
   end
 
+  context "#find" do
+    let(:customer) { Fabricate(:customer) }
+
+    it "returns a record matching the given id" do
+      get :find, id: customer.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json[:first_name]).to eq customer.first_name
+      expect(json[:last_name]).to eq customer.last_name
+    end
+
+    it "returns a record matching the given first name" do
+      get :find, first_name: customer.first_name, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json[:first_name]).to eq customer.first_name
+      expect(json[:last_name]).to eq customer.last_name
+    end
+
+    it "returns a record matching the given last name" do
+      get :find, last_name: customer.last_name, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json[:first_name]).to eq customer.first_name
+      expect(json[:last_name]).to eq customer.last_name
+    end
+  end
+
+  context "#find_all" do
+    let!(:customer) { Fabricate(:customer) }
+    let!(:customer1) { Fabricate(:customer, last_name: "Davis") }
+    let!(:customer2) { Fabricate(:customer, first_name: "Kim") }
+
+    it "returns all records matching the given id" do
+      get :find_all, id: customer.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true).first
+
+      expect(response.code).to eq "200"
+      expect(json[:first_name]).to eq customer.first_name
+      expect(json[:last_name]).to eq customer.last_name
+    end
+
+    it "returns all records matching the given first name" do
+      get :find_all, first_name: customer.first_name, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 2
+      expect(json.first[:last_name]).to eq customer.last_name
+      expect(json.last[:last_name]).to eq customer1.last_name
+    end
+
+    it "returns all records matching the given last name" do
+      get :find_all, last_name: customer.last_name, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 2
+      expect(json.first[:first_name]).to eq customer.first_name
+      expect(json.last[:first_name]).to eq customer2.first_name
+    end
+  end
+
   context "#invoices" do
     let!(:customer) { Fabricate(:customer) }
     let!(:merchant) { Fabricate(:merchant) }
