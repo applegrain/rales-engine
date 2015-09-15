@@ -22,10 +22,15 @@ class Api::V1::InvoiceItemsController < Api::V1::BaseController
     respond_with InvoiceItem.find(value)
   end
 
+  def invoice
+    invoice_item = InvoiceItem.find_by(id: find_params[:invoice_item_id].to_i)
+    respond_with invoice_item.invoice
+  end
+
   private
 
   def find_params
-    params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price)
+    params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price, :invoice_item_id)
   end
 
 end
