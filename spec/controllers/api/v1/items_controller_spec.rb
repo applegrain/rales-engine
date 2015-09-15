@@ -59,18 +59,17 @@ describe Api::V1::ItemsController do
     let!(:merchant) { Fabricate(:merchant) }
     let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
     let!(:item1) { Fabricate(:item,
-                             name: "Item",
                              merchant_id: merchant.id) }
 
     it "returns all records matching the given id" do
       get :find_all, id: item.id, format: :json
 
-      json = JSON.parse(response.body, symbolize_names: true).first
+      json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.code).to eq "200"
-      expect(json[:name]).to eq item.name
-      expect(json[:description]).to eq item.description
-      expect(json[:merchant_id]).to eq merchant.id
+      expect(json.count).to eq 1
+      expect(json.first[:id]).to eq item.id
+      expect(json.first[:name]).to eq item.name
     end
 
     it "returns all records matching the given name" do

@@ -46,11 +46,12 @@ describe Api::V1::MerchantsController do
     it "returns all records matching the given id" do
       get :find_all, id: merchant.id, format: :json
 
-      json = JSON.parse(response.body, symbolize_names: true).first
+      json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.code).to eq "200"
-      expect(json[:id]).to eq merchant.id
-      expect(json[:name]).to eq merchant.name
+      expect(json.count).to eq 1
+      expect(json.first[:id]).to eq merchant.id
+      expect(json.first[:name]).to eq merchant.name
     end
 
     it "returns all records matching the given name" do

@@ -57,11 +57,12 @@ describe Api::V1::CustomersController do
     it "returns all records matching the given id" do
       get :find_all, id: customer.id, format: :json
 
-      json = JSON.parse(response.body, symbolize_names: true).first
+      json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.code).to eq "200"
-      expect(json[:first_name]).to eq customer.first_name
-      expect(json[:last_name]).to eq customer.last_name
+      expect(json.count).to eq 1
+      expect(json.first[:first_name]).to eq customer.first_name
+      expect(json.first[:last_name]).to eq customer.last_name
     end
 
     it "returns all records matching the given first name" do
