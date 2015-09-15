@@ -1,10 +1,10 @@
 require "rails_helper"
 
 describe Api::V1::TransactionsController do
-  context "#show" do
-    let!(:invoice) { Fabricate(:invoice) }
-    let(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
+  let!(:invoice) { Fabricate(:invoice) }
+  let(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
 
+  context "#show" do
     it "returns a record matching the given id" do
       get :show, id: transaction.id, format: :json
 
@@ -20,9 +20,6 @@ describe Api::V1::TransactionsController do
   end
 
   context "#find" do
-    let!(:invoice) { Fabricate(:invoice) }
-    let(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
-
     it "returns a record matching the given id" do
       get :find, id: transaction.id, format: :json
 

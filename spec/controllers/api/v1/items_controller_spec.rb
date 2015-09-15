@@ -1,10 +1,10 @@
 require "rails_helper"
 
 describe Api::V1::ItemsController do
-  context "#show" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
+  let!(:merchant) { Fabricate(:merchant) }
+  let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
 
+  context "#show" do
     it "returns a record matching the given id" do
       get :show, id: item.id, format: :json
 
@@ -18,9 +18,6 @@ describe Api::V1::ItemsController do
   end
 
   context "#find" do
-    let(:merchant) { Fabricate(:merchant) }
-    let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
-
     it "returns a record matching the given id" do
       get :find, id: item.id, format: :json
 
@@ -56,7 +53,6 @@ describe Api::V1::ItemsController do
   end
 
   context "#find_all" do
-    let!(:merchant) { Fabricate(:merchant) }
     let!(:item) { Fabricate(:item, merchant_id: merchant.id) }
     let!(:item1) { Fabricate(:item,
                              merchant_id: merchant.id) }

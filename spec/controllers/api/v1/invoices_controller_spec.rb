@@ -1,13 +1,13 @@
 require "rails_helper"
 
 describe Api::V1::InvoicesController do
-  context "#show" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let(:invoice) { Fabricate(:invoice,
-                              customer_id: customer.id,
-                              merchant_id: merchant.id) }
+  let!(:merchant) { Fabricate(:merchant) }
+  let!(:customer) { Fabricate(:customer) }
+  let(:invoice) { Fabricate(:invoice,
+                            customer_id: customer.id,
+                            merchant_id: merchant.id) }
 
+  context "#show" do
     it "returns a record matching the given id" do
       get :show, id: invoice.id, format: :json
 
@@ -21,12 +21,6 @@ describe Api::V1::InvoicesController do
   end
 
   context "#find" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let(:invoice) { Fabricate(:invoice,
-                              customer_id: customer.id,
-                              merchant_id: merchant.id) }
-
     it "returns a record matching the given id" do
       get :find, id: invoice.id, format: :json
 
@@ -62,8 +56,6 @@ describe Api::V1::InvoicesController do
   end
 
   context "#find_all" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
     let!(:invoice) { Fabricate(:invoice,
                               customer_id: customer.id,
                               merchant_id: merchant.id) }

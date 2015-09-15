@@ -1,17 +1,17 @@
 require "rails_helper"
 
 describe Api::V1::InvoiceItemsController do
+  let!(:merchant) { Fabricate(:merchant) }
+  let!(:customer) { Fabricate(:customer) }
+  let!(:item) { Fabricate(:item) }
+  let!(:invoice) { Fabricate(:invoice,
+                            customer_id: customer.id,
+                            merchant_id: merchant.id) }
+  let(:invoice_item) { Fabricate(:invoice_item,
+                                 item_id: item.id,
+                                 invoice_id: invoice.id) }
 
   context "#show" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let!(:item) { Fabricate(:item) }
-    let!(:invoice) { Fabricate(:invoice,
-                              customer_id: customer.id,
-                              merchant_id: merchant.id) }
-    let(:invoice_item) { Fabricate(:invoice_item,
-                                   item_id: item.id,
-                                   invoice_id: invoice.id) }
 
     it "returns a record matching the given id" do
       get :show, id: invoice_item.id, format: :json
@@ -28,16 +28,6 @@ describe Api::V1::InvoiceItemsController do
   end
 
   context "#find" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let!(:item) { Fabricate(:item) }
-    let!(:invoice) { Fabricate(:invoice,
-                              customer_id: customer.id,
-                              merchant_id: merchant.id) }
-    let(:invoice_item) { Fabricate(:invoice_item,
-                                   item_id: item.id,
-                                   invoice_id: invoice.id) }
-
     it "returns a record matching the given id" do
       get :find, id: invoice_item.id, format: :json
 
@@ -93,12 +83,6 @@ describe Api::V1::InvoiceItemsController do
   end
 
   context "#find_all" do
-    let!(:merchant) { Fabricate(:merchant) }
-    let!(:customer) { Fabricate(:customer) }
-    let!(:item) { Fabricate(:item) }
-    let!(:invoice) { Fabricate(:invoice,
-                              customer_id: customer.id,
-                              merchant_id: merchant.id) }
     let!(:invoice_item) { Fabricate(:invoice_item,
                                     item_id: item.id,
                                     invoice_id: invoice.id) }
