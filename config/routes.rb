@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       end
 
       resources :invoices, only: [:show] do
+        get :transactions
+
         collection do
           get :find
           get :find_all

@@ -113,4 +113,20 @@ describe Api::V1::InvoicesController do
       expect(json.first[:id]).to eq invoice.id
     end
   end
+
+  context "#transactions" do
+    let!(:invoice) { Fabricate(:invoice) }
+    let!(:invoice1) { Fabricate(:invoice) }
+    let!(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
+
+    it "returns all transactions related to an invoice" do
+      get :transactions, invoice_id: invoice.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.code).to eq "200"
+      expect(json.count).to eq 1
+      expect(json.first[:id]).to eq transaction.id
+    end
+  end
 end
