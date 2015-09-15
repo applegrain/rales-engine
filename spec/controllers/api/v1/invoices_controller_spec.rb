@@ -184,4 +184,16 @@ describe Api::V1::InvoicesController do
       expect(invoice.id).to eq customer.invoices.first.id
     end
   end
+
+  context "#merchant" do
+    it "returns the associated merchant" do
+      get :merchant, invoice_id: invoice.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq merchant.id
+      expect(invoice.id).to eq merchant.invoices.first.id
+    end
+  end
 end

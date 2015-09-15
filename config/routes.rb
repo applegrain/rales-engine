@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         get :invoice_items
         get :items
         get :customer
+        get :merchant
 
         collection do
           get :find
