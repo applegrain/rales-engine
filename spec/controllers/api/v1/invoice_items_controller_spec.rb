@@ -153,4 +153,16 @@ describe Api::V1::InvoiceItemsController do
       expect(json[:id]).to eq invoice_item.invoice_id
     end
   end
+
+  context "#item" do
+    it "returns the assoicated item" do
+      get :item, invoice_item_id: invoice_item.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq item.id
+      expect(json[:id]).to eq invoice_item.item.id
+    end
+  end
 end
