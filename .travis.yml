@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.2.2
+
+script:
+  - bundle install
+  - bundle exec rake db:create db:schema:load
+  - bundle exec rspec
+
+addons:
+  code_climate:
+    repo_token: ENV['CODECLIMATE_REPO_TOKEN'] bundle exec rake
