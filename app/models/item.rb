@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   belongs_to :merchant
 
   def best_day
-    invoices.successful.group('"invoices"."created_at"').sum("quantity * unit_price").sort_by(&:last).map(&:first).last
+    { best_day: invoices.successful.group('"invoices"."created_at"').sum("quantity * unit_price").sort_by(&:last).map(&:first).last }
   end
 
   def self.most_items(quantity)
