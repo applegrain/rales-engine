@@ -1,4 +1,8 @@
 class Api::V1::MerchantsController < Api::V1::BaseController
+  def index
+    respond_with Merchant.all
+  end
+
   def show
     respond_with Merchant.find_by(id: params[:id])
   end
@@ -33,7 +37,9 @@ class Api::V1::MerchantsController < Api::V1::BaseController
     params.permit(:id,
                   :name,
                   :merchant_id,
-                  :date)
+                  :date,
+                  :created_at,
+                  :updated_at)
   end
 
 end
