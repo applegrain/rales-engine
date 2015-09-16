@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :customers, only: [:show] do
+      resources :customers, only: [:show, :index] do
           get :invoices
           get :transactions
 
