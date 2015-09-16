@@ -33,4 +33,11 @@ class Merchant < ActiveRecord::Base
     end
       .sort_by { |pair| -pair.last }.map(&:first).first(quantity.to_i)
   end
+
+  def self.ranked_by_total_items_sold(quantity)
+    values = Merchant.all.map do |merchant|
+      [merchant, merchant.invoices.successful.joins(:invoice_items).sum(:quantity)]
+    end
+      .sort_by { |pair| -pair.last }.map(&:first).first(quantity.to_i)
+  end
 end

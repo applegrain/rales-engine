@@ -39,6 +39,10 @@ class Api::V1::MerchantsController < Api::V1::BaseController
     respond_with Merchant.ranked_by_total_revenue(find_params[:quantity])
   end
 
+  def most_items
+    respond_with Merchant.ranked_by_total_items_sold(find_params[:quantity])
+  end
+
   def customers_with_pending_invoices
     respond_with Merchant.find_by(id: find_params[:merchant_id]).customers_with_pending_invoices
   end
