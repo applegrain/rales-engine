@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      resources :merchants, only: [:show] do
+      resources :merchants, only: [:show, :index] do
         get :items
         get :invoices
         get :revenue
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :items, only: [:show] do
+      resources :items, only: [:show, :index] do
         get :invoice_items
         get :merchant
 
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :invoices, only: [:show] do
+      resources :invoices, only: [:show, :index] do
         get :transactions
         get :invoice_items
         get :items
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :invoice_items, only: [:show] do
+      resources :invoice_items, only: [:show, :index] do
         get :invoice
         get :item
 
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :transactions, only: [:show] do
+      resources :transactions, only: [:show, :index] do
         get :invoice
 
         collection do

@@ -45,8 +45,10 @@ class Parser
       Transaction.create({
         invoice_id: row[1],
         credit_card_number: row[2],
-        result: row[4]
-        })
+        result: row[4],
+        created_at: row[5],
+        updated_at: row[6]
+      })
     end
   end
 
@@ -57,7 +59,9 @@ class Parser
         item_id: row[1],
         invoice_id: row[2],
         quantity: row[3].to_i,
-        unit_price: row[4].to_f
+        unit_price: (row[4].to_i / 100.00),
+        created_at: row[5],
+        updated_at: row[6]
       )
     end
   end
