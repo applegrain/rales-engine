@@ -1,4 +1,8 @@
 class Api::V1::TransactionsController < Api::V1::BaseController
+  def index
+  respond_with Transaction.all
+  end
+
   def show
     respond_with Transaction.find(params[:id])
   end
@@ -26,6 +30,8 @@ class Api::V1::TransactionsController < Api::V1::BaseController
                   :credit_card_number,
                   :result,
                   :invoice_id,
-                  :transaction_id)
+                  :transaction_id,
+                  :created_at,
+                  :updated_at)
   end
 end
