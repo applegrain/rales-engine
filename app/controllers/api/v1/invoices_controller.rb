@@ -1,4 +1,8 @@
 class Api::V1::InvoicesController < Api::V1::BaseController
+  def index
+    respond_with Invoice.all
+  end
+
   def show
     respond_with Invoice.find(params[:id])
   end
@@ -42,6 +46,8 @@ class Api::V1::InvoicesController < Api::V1::BaseController
                   :status,
                   :merchant_id,
                   :customer_id,
-                  :invoice_id)
+                  :invoice_id,
+                  :created_at,
+                  :updated_at)
   end
 end
