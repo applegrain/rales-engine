@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get :items
         get :invoices
         get :revenue
+        get :customers_with_pending_invoices
 
         collection do
           get :find
