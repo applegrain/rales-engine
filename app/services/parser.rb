@@ -3,12 +3,16 @@ require "csv"
 class Parser
 
   def self.load
+    puts "Parsing CSV files into ActiveRecord table rows..."
+
     customer
     merchant
     item
     invoice
     transaction
     invoice_item
+
+    puts "\e[37mDone."
   end
 
   # Customers.csv
@@ -16,6 +20,8 @@ class Parser
     CSV.foreach("../rales-engine/app/services/data/customers.csv", headers: true, header_converters: :symbol) do |row|
       Customer.create(row.to_hash)
     end
+
+    puts "\e[32m#{Customer.count} Customers successfully created \u2713"
   end
 
   # Merchants.csv
@@ -23,6 +29,8 @@ class Parser
     CSV.foreach("../rales-engine/app/services/data/merchants.csv", headers: true, header_converters: :symbol) do |row|
       Merchant.create(row.to_hash)
     end
+
+    puts "\e[32m#{Merchant.count} Merchants successfully created \u2713"
   end
 
   # Invoices.csv
@@ -30,6 +38,8 @@ class Parser
     CSV.foreach("../rales-engine/app/services/data/invoices.csv", headers: true, header_converters: :symbol) do |row|
       Invoice.create(row.to_hash)
     end
+
+    puts "\e[32m#{Invoice.count} Invoices successfully created \u2713"
   end
 
   # Items.csv
@@ -44,6 +54,8 @@ class Parser
         updated_at: row[6]
       })
     end
+
+    puts "\e[32m#{Item.count} Items successfully created \u2713"
   end
 
   # Transactions.csv
@@ -57,6 +69,8 @@ class Parser
         updated_at: row[6]
       })
     end
+
+    puts "\e[32m#{Transaction.count} Transactions successfully created \u2713"
   end
 
   # InvoiceItems.csv
@@ -71,5 +85,7 @@ class Parser
        :updated_at => row[6]
       })
     end
+
+    puts "\e[32m#{InvoiceItem.count} Invoice items successfully created \u2713"
   end
 end
