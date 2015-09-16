@@ -24,7 +24,7 @@ class Api::V1::MerchantsController < Api::V1::BaseController
   end
 
   def revenue
-    respond_with Merchant.find_by(id: find_params[:merchant_id]).revenue
+    respond_with Merchant.find_by(id: find_params[:merchant_id]).revenue(find_params)
   end
 
   private
@@ -32,7 +32,8 @@ class Api::V1::MerchantsController < Api::V1::BaseController
   def find_params
     params.permit(:id,
                   :name,
-                  :merchant_id)
+                  :merchant_id,
+                  :date)
   end
 
 end

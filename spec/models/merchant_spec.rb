@@ -13,10 +13,10 @@ describe Merchant do
 
     context "#revenue" do
       it "returns the total revenue for a merchant across all transactions" do
-        expect(merchant.revenue).to eq 0.2
+        params = { "merchant_id" => "1" }
+
+        expect(merchant.revenue(params)).to eq 0.2
       end
     end
   end
 end
-
-# GET /api/v1/merchants/:id/revenue returns the total revenue for that merchant across all transactions
