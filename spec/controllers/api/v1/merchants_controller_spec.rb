@@ -2,6 +2,12 @@ require "rails_helper"
 
 describe Api::V1::MerchantsController do
   let(:merchant) { Fabricate(:merchant) }
+  let!(:invoice) { Fabricate(:invoice,
+                             merchant_id: merchant.id) }
+  let!(:invoice_item) { Fabricate(:invoice_item,
+                                  invoice_id: invoice.id) }
+  let!(:transaction) { Fabricate(:transaction,
+                                 invoice_id: invoice.id) }
 
   context "#show" do
 
@@ -115,12 +121,6 @@ describe Api::V1::MerchantsController do
   end
 
   context "#revenue" do
-    let!(:invoice) { Fabricate(:invoice,
-                               merchant_id: merchant.id) }
-    let!(:invoice_item) { Fabricate(:invoice_item,
-                                    invoice_id: invoice.id) }
-    let!(:transaction) { Fabricate(:transaction,
-                                   invoice_id: invoice.id) }
 
     it "returns total revenue for that merchant across all transactions" do
       get :revenue, merchant_id: merchant.id, format: :json
@@ -129,7 +129,16 @@ describe Api::V1::MerchantsController do
       expect(response.body).to eq "0.2"
     end
   end
+
+  context "#revenue?date=x" do
+
+    it "returns total revenue for that merchant on a given date" do
+      get :revenue, merchant_id: merchant.id, date: "2010-01-11 12:12:12", format: :json
+
+      expect(response.status).to eq 200
+    end
+  end
 end
 
 
-# GET /api/v1/merchants/:id/revenue returns the total revenue for that merchant across all transactions
+# GET /api/v1/merchants/:id/revenue?date=x returns the total revenue for that merchant for a specific invoice date x
