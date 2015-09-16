@@ -27,6 +27,18 @@ class Api::V1::ItemsController < Api::V1::BaseController
     respond_with Item.find_by(id: find_params[:item_id]).merchant
   end
 
+  def best_day
+    respond_with Item.find_by(id: find_params[:item_id]).best_day
+  end
+
+  def most_items
+    respond_with Item.most_items(params[:quantity])
+  end
+
+  def most_revenue
+    respond_with Item.most_revenue(find_params[:quantity])
+  end
+
   private
 
   def find_params
@@ -37,6 +49,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
                   :merchant_id,
                   :item_id,
                   :created_at,
-                  :updated_at)
+                  :updated_at,
+                  :quantity)
   end
 end
