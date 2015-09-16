@@ -1,4 +1,8 @@
 class Api::V1::ItemsController < Api::V1::BaseController
+  def index
+    respond_with Item.all
+  end
+
   def show
     respond_with Item.find(params[:id])
   end
@@ -31,6 +35,8 @@ class Api::V1::ItemsController < Api::V1::BaseController
                   :description,
                   :unit_price,
                   :merchant_id,
-                  :item_id)
+                  :item_id,
+                  :created_at,
+                  :updated_at)
   end
 end

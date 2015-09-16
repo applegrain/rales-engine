@@ -35,7 +35,14 @@ class Parser
   # Items.csv
   def self.item
     CSV.foreach("../rales-engine/app/services/data/items.csv", headers: true, header_converters: :symbol) do |row|
-      Item.create(row.to_hash)
+      Item.create({
+        name: row[1],
+        description: row[2],
+        unit_price: (row[3].to_i / 100.00),
+        merchant_id: row[4],
+        created_at: row[5],
+        updated_at: row[6]
+      })
     end
   end
 
