@@ -35,6 +35,10 @@ class Api::V1::MerchantsController < Api::V1::BaseController
     respond_with Merchant.total_revenue_by_date(find_params[:date])
   end
 
+  def most_revenue
+    respond_with Merchant.ranked_by_total_revenue(find_params[:quantity])
+  end
+
   def customers_with_pending_invoices
     respond_with Merchant.find_by(id: find_params[:merchant_id]).customers_with_pending_invoices
   end
@@ -47,7 +51,8 @@ class Api::V1::MerchantsController < Api::V1::BaseController
                   :merchant_id,
                   :date,
                   :created_at,
-                  :updated_at)
+                  :updated_at,
+                  :quantity)
   end
 
 end
