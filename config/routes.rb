@@ -12,6 +12,7 @@ Rails.application.routes.draw do
           get :find
           get :find_all
           get :random
+          get :revenue, to: :all_merchants_revenue
         end
       end
 
