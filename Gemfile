@@ -15,8 +15,9 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :test do
-  gem "codeclimate-test-reporter", require: nil
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'byebug'
