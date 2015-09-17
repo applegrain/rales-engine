@@ -1,7 +1,23 @@
 require "rails_helper"
 
 describe Api::V1::CustomersController do
-  let(:customer) { Fabricate(:customer) }
+  let!(:customer) { Fabricate(:customer) }
+  let!(:customer2) { Fabricate(:customer) }
+
+  context "#index" do
+
+    it "returns all records" do
+      get :index, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json.count).to eq 2
+      expect(json.first[:first_name]).to eq customer.first_name
+      expect(json.first[:last_name]).to eq customer.last_name
+    end
+  end
+
 
   context "#show" do
 
@@ -125,6 +141,24 @@ describe Api::V1::CustomersController do
       expect(json[:credit_card_number]).to eq transaction.credit_card_number
       expect(json[:invoice_id]).to eq invoice.id
       expect(json[:result]).to eq transaction.result
+    end
+  end
+
+  context "#favorite merchant" do
+
+    let!(:merchant) { Fabricate(:merchant) }
+    let!(:invoice) { Fabricate(:invoice,
+                               merchant_id: merchant.id,
+                               customer_id: customer.id) }
+    let!(:transaction) { Fabricate(:transaction, invoice_id: invoice.id) }
+
+    it "returns favorite merchant for given customer" do
+      get :favorite_merchant, customer_id: customer.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true).first
+
+      expect(response.status).to eq 200
+      expect(json.last).to eq merchant.id
     end
   end
 end
