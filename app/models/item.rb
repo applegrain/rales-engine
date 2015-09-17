@@ -9,14 +9,14 @@ class Item < ActiveRecord::Base
   end
 
   def self.most_items(quantity)
-    values = Item.all.map do |item|
+    Item.all.map do |item|
       [item, item.invoices.successful.sum("quantity")]
     end
       .sort_by { |pair| -pair.last }.map(&:first).first(quantity.to_i)
   end
 
   def self.most_revenue(quantity)
-    values = Item.all.map do |item|
+    Item.all.map do |item|
       [item, item.invoices.successful.sum("quantity * unit_price")]
     end
       .sort_by { |pair| -pair.last }.map(&:first).first(quantity.to_i)
