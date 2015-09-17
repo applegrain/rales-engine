@@ -112,4 +112,34 @@ describe Api::V1::ItemsController do
       expect(json[:id]).to eq item.merchant.id
     end
   end
+
+  context "#best_day" do
+    let!(:invoice) { Fabricate(:invoice) }
+    let!(:transaction) { Fabricate(:transaction,
+                                   invoice_id: invoice.id) }
+    let!(:invoice_item) { Fabricate(:invoice_item,
+                                    invoice_id: invoice.id,
+                                    item_id: item.id) }
+
+    it "returns a date on which the item sold the best" do
+      get :best_day, item_id: item.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+    end
+  end
+
+  context "#merchant" do
+
+    it "returns an assoicated merchant" do
+      get :merchant, item_id: item.id, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json[:id]).to eq merchant.id
+      expect(json[:id]).to eq item.merchant.id
+    end
+  end
 end
