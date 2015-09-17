@@ -1,0 +1,49 @@
+{
+  "resource": "Customers",
+  "http_method": "GET",
+  "route": "/api/v1/customers/find_all",
+  "description": "Returns all records matching the given first name",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "first_name",
+      "description": "first name of customers"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/customers/find_all?first_name=Jorge",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "http://localhost:3000",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "first_name": "Jorge"
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[{\"id\":14,\"first_name\":\"Jorge\",\"last_name\":\"Tellez\",\"created_at\":\"2015-09-17T16:19:41.436Z\",\"updated_at\":\"2015-09-17T16:19:41.436Z\"},{\"id\":15,\"first_name\":\"Jorge\",\"last_name\":\"David\",\"created_at\":\"2015-09-17T16:19:41.437Z\",\"updated_at\":\"2015-09-17T16:19:41.437Z\"}]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"b9ad2fbf36bc3d14549e1c0e75c64162\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "dca00bd0-1847-414d-b30c-270c954b2993",
+        "X-Runtime": "0.003852",
+        "Content-Length": "264"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/customers/find_all?first_name=Jorge\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: http://localhost:3000\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

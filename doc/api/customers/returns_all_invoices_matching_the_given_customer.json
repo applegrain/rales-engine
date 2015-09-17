@@ -1,0 +1,48 @@
+{
+  "resource": "Customers",
+  "http_method": "GET",
+  "route": "/api/v1/customers/:customer_id/invoices",
+  "description": "Returns all invoices matching the given customer",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "customer_id",
+      "description": "id of customer"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/customers/20/invoices",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "http://localhost:3000",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[{\"id\":1,\"status\":\"paid\",\"created_at\":\"2010-01-11T12:12:12.000Z\",\"updated_at\":\"2015-09-17T16:19:41.487Z\",\"merchant_id\":1,\"customer_id\":20}]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"72c78670cdee432ad1686891861cff19\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "89980ffb-3785-479e-9020-63fcadbc3663",
+        "X-Runtime": "0.031157",
+        "Content-Length": "139"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/customers/20/invoices\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: http://localhost:3000\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}
