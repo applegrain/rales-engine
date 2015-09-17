@@ -114,6 +114,7 @@ describe Api::V1::ItemsController do
   end
 
   context "#best_day" do
+
     let!(:invoice) { Fabricate(:invoice) }
     let!(:transaction) { Fabricate(:transaction,
                                    invoice_id: invoice.id) }
@@ -127,6 +128,46 @@ describe Api::V1::ItemsController do
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq 200
+    end
+  end
+
+  context "#most_items" do
+
+    let!(:invoice) { Fabricate(:invoice) }
+    let!(:transaction) { Fabricate(:transaction,
+                                   invoice_id: invoice.id) }
+    let!(:invoice_item) { Fabricate(:invoice_item,
+                                    invoice_id: invoice.id,
+                                    item_id: item.id) }
+
+    it "returns top n items ranked by quantity sold" do
+      get :most_items, quantity: 1, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json.first[:id]).to eq item.id
+      expect(json.first[:description]).to eq item.description
+    end
+  end
+
+  context "#most_revenue" do
+
+    let!(:invoice) { Fabricate(:invoice) }
+    let!(:transaction) { Fabricate(:transaction,
+                                   invoice_id: invoice.id) }
+    let!(:invoice_item) { Fabricate(:invoice_item,
+                                    invoice_id: invoice.id,
+                                    item_id: item.id) }
+
+    it "returns top n items ranked by revenue" do
+      get :most_revenue, quantity: 1, format: :json
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(json.first[:id]).to eq item.id
+      expect(json.first[:description]).to eq item.description
     end
   end
 
