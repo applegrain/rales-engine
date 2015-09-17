@@ -22,7 +22,7 @@ describe Api::V1::InvoiceItemsController do
       expect(json[:id]).to eq invoice_item.id
       expect(json[:item_id]).to eq invoice_item.item_id
       expect(json[:invoice_id]).to eq invoice_item.invoice_id
-      expect(json[:unit_price]).to eq invoice_item.unit_price
+      expect(json[:unit_price]).to eq invoice_item.unit_price.to_s
       expect(json[:quantity]).to eq invoice_item.quantity
     end
   end
@@ -38,7 +38,7 @@ describe Api::V1::InvoiceItemsController do
       expect(json[:id]).to eq invoice_item.id
       expect(json[:item_id]).to eq invoice_item.item_id
       expect(json[:invoice_id]).to eq invoice_item.invoice_id
-      expect(json[:unit_price]).to eq invoice_item.unit_price
+      expect(json[:unit_price]).to eq invoice_item.unit_price.to_s
       expect(json[:quantity]).to eq invoice_item.quantity
     end
 
@@ -79,7 +79,7 @@ describe Api::V1::InvoiceItemsController do
 
       expect(response.status).to eq 200
       expect(json[:id]).to eq invoice_item.id
-      expect(json[:unit_price]).to eq invoice_item.unit_price
+      expect(json[:unit_price]).to eq invoice_item.unit_price.to_s
     end
   end
 
@@ -140,8 +140,8 @@ describe Api::V1::InvoiceItemsController do
       expect(response.status).to eq 200
       expect(json.count).to eq 2
       expect(json.first[:id]).to eq invoice_item.id
-      expect(json.first[:unit_price]).to eq invoice_item.unit_price
-      expect(json.first[:unit_price]).to eq invoice_item1.unit_price
+      expect(json.first[:unit_price]).to eq invoice_item.unit_price.to_s
+      expect(json.first[:unit_price]).to eq invoice_item1.unit_price.to_s
     end
   end
 

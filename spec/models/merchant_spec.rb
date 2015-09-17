@@ -15,7 +15,7 @@ describe Merchant do
       it "returns the total revenue for a merchant across all transactions" do
         params = { "merchant_id" => "1" }
 
-        expect(merchant.revenue(params)).to eq 0.2
+        expect(merchant.revenue(params)).to eq revenue: 20.0
       end
     end
   end

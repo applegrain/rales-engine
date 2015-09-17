@@ -126,7 +126,7 @@ describe Api::V1::MerchantsController do
       get :revenue, merchant_id: merchant.id, format: :json
 
       expect(response.status).to eq 200
-      expect(response.body).to eq "0.2"
+      expect(response.body).to eq "{\"revenue\":\"20.0\"}"
     end
   end
 
@@ -139,6 +139,3 @@ describe Api::V1::MerchantsController do
     end
   end
 end
-
-
-# GET /api/v1/merchants/:id/revenue?date=x returns the total revenue for that merchant for a specific invoice date x
