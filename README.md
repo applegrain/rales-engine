@@ -6,7 +6,7 @@
 
 This is the first individual project of Module 3 at the Turing School. Students have to use Rails and ActiveRecord to build a JSON API which exposes the SalesEngine data schema.
 
-Sales Engine is the last project of Module 1. Students have to build a relational database and mimick
+Sales Engine is the last project of Module 1. Students have to build a relational database and mimic
 ActiveRecord query methods using just Ruby. [Sales Engine](https://github.com/applegrain/sales_engine)
 
 ###### instructions
