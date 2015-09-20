@@ -21,7 +21,7 @@ ActiveRecord query methods using just Ruby. [Sales Engine](https://github.com/ap
 * Learn how to to build Single-Responsibility controllers to provide a well-designed and versioned API.
 * Learn how to use controller tests to drive your design.
 * Use Ruby and ActiveRecord to perform more complicated business intelligence.
- [![Test Coverage](https://codeclimate.com/github/applegrain/rales-engine/badges/coverage.svg)](https://codeclimate.com/github/applegrain/rales-engine/coverage)
+ 
 #### Technical Expectations
 
 * All endpoints will expect to return JSON data
