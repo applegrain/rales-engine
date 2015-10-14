@@ -1,0 +1,48 @@
+{
+  "resource": "Customers",
+  "http_method": "GET",
+  "route": "/api/v1/customers/:customer_id/transactions",
+  "description": "Returns all transactions matching the given customer",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "customer_id",
+      "description": "id of customer"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/customers/22/transactions",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "http://localhost:3000",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[{\"id\":1,\"credit_card_number\":\"1234567890\",\"result\":\"success\",\"created_at\":\"2015-09-17T16:19:41.535Z\",\"updated_at\":\"2015-09-17T16:19:41.535Z\",\"invoice_id\":2}]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"a29472160db873e3a77f376a9de2ca23\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "deb107d2-0db1-45c7-8faa-29d1a2e9ff2b",
+        "X-Runtime": "0.018137",
+        "Content-Length": "158"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/customers/22/transactions\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: http://localhost:3000\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

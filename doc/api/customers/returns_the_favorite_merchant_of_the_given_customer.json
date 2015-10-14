@@ -1,0 +1,48 @@
+{
+  "resource": "Customers",
+  "http_method": "GET",
+  "route": "/api/v1/customers/:customer_id/favorite_merchant",
+  "description": "Returns the favorite merchant of the given customer",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "customer_id",
+      "description": "id of customer"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/customers/24/favorite_merchant",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "http://localhost:3000",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"id\":3,\"name\":\"Davis' Dolls\",\"created_at\":\"2015-09-17T16:19:41.562Z\",\"updated_at\":\"2015-09-17T16:19:41.562Z\"}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"deebc11d55d60267f261f3005337933e\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "f2d4d555-4469-4a91-9991-3d98f7b6f485",
+        "X-Runtime": "0.014840",
+        "Content-Length": "110"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/customers/24/favorite_merchant\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: http://localhost:3000\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

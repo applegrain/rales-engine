@@ -1,0 +1,64 @@
+{
+  "resources": [
+    {
+      "name": "Customers",
+      "examples": [
+        {
+          "description": "Returns all customers",
+          "link": "customers/returns_all_customers.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns a specific customer",
+          "link": "customers/returns_a_specific_customer.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns the first record matching the given id",
+          "link": "customers/returns_the_first_record_matching_the_given_id.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns the first record matching the given first name",
+          "link": "customers/returns_the_first_record_matching_the_given_first_name.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns the first record matching the given last name",
+          "link": "customers/returns_the_first_record_matching_the_given_last_name.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns all records matching the given id",
+          "link": "customers/returns_all_records_matching_the_given_id.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns all records matching the given first name",
+          "link": "customers/returns_all_records_matching_the_given_first_name.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns all records matching the given last name",
+          "link": "customers/returns_all_records_matching_the_given_last_name.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns all invoices matching the given customer",
+          "link": "customers/returns_all_invoices_matching_the_given_customer.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns all transactions matching the given customer",
+          "link": "customers/returns_all_transactions_matching_the_given_customer.json",
+          "groups": "all"
+        },
+        {
+          "description": "Returns the favorite merchant of the given customer",
+          "link": "customers/returns_the_favorite_merchant_of_the_given_customer.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}

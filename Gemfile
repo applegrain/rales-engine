@@ -13,6 +13,8 @@ gem 'figaro'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
+  gem 'rspec_api_documentation'
+  gem 'apitome'
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil

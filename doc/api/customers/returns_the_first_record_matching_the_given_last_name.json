@@ -1,0 +1,49 @@
+{
+  "resource": "Customers",
+  "http_method": "GET",
+  "route": "/api/v1/customers/find",
+  "description": "Returns the first record matching the given last name",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "last_name",
+      "description": "last name of customer"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/customers/find?last_name=Tellez",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "http://localhost:3000",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "last_name": "Tellez"
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"id\":9,\"first_name\":\"Jorge\",\"last_name\":\"Tellez\",\"created_at\":\"2015-09-17T16:19:41.408Z\",\"updated_at\":\"2015-09-17T16:19:41.408Z\"}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"33dbe9600ae887076e025e714ebee35b\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "2de25023-773e-4d6e-85f8-5574c602ef77",
+        "X-Runtime": "0.003079",
+        "Content-Length": "130"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/customers/find?last_name=Tellez\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: http://localhost:3000\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}
